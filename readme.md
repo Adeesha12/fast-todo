@@ -1,0 +1,1 @@
+<!-- need to add db for mysql psql and maria db look up the application manager service -->
