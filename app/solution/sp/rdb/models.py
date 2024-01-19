@@ -22,7 +22,7 @@ class User(Base):
 class Task(Base):
     __tablename__ = 'todos'
     TaskID = Column(Integer, primary_key=True, index=True)
-    UserID = Column(Integer,ForeignKey("user.UserID", on_delete='CASCADE'),nullable=False)
+    UserID = Column(Integer,ForeignKey("user.UserID", ondelete='CASCADE'),nullable=False)
     TaskTitle = Column(String(255), nullable=False)
     Description = Column(Text)
     DueDate = Column(Date)

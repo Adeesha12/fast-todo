@@ -1,6 +1,7 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Body, Depends
 
+from solution.channel.fastapi.todo_list_manager.schema import UserSchema
 from solution.sp.rdb import models
 from solution.sp.rdb.db_connection import SessionLocal, get_db
 
@@ -22,3 +23,11 @@ def register(data, db):
     db.refresh(db_user)
     db.close()
     return db_user
+
+def user_signup(db:db_dependancy, user:UserSchema = Body(default=None)) -> dict:
+    db_user = models.Users(**user.model_dump())
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    db.close()
+    return sign_jwt(user.email)
