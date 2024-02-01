@@ -1,16 +1,16 @@
 from pydantic import BaseModel, EmailStr ,Field
 from datetime import date
 
-# class BookItem(BaseModel):
-#     title: str = Field(default=None)
-#     Author: str = Field(default=None)
-#     Publication_Date: date  = Field(default=None)
-#     ISBN: int = Field(default=None)
-#     Cover_Image: str = Field(default=None)
-    
-    
+class Task(BaseModel):
+    TaskTitle: str = Field(default=None)
+    Description: str = Field(default=None)
+    DueDate: date  = Field(default=None)
+    IsComplete: bool = Field(default=None)
+
+
+
 class UserSchema(BaseModel):
-    username: str = Field(default=None)
+    Username: str = Field(default=None)
     email: EmailStr = Field(default=None)
     password: str = Field(default=None)
     class Config:
@@ -22,6 +22,7 @@ class UserSchema(BaseModel):
             }
         }
     
+
 
 class UserLoginSchema(BaseModel):
     email: EmailStr = Field(default=None)
